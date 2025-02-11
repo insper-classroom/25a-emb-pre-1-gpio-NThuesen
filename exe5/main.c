@@ -17,15 +17,33 @@ int main() {
     gpio_pull_up(BTN_PIN_2);
     int cnt_1 = 0;
     int cnt_2 = 0;
+    bool clickou = false;
+    bool clickou_2 = false;
 
     while (true) {
 
         if (!gpio_get(BTN_PIN)) {
+            clickou = true;
+            while (!gpio_get(BTN_PIN)) {
+                sleep_ms(100);
+            }
+        }
+
+        if (clickou){
             printf("Botao 1: %d\n", cnt_1++);
+            clickou = false;
         }
 
         if (!gpio_get(BTN_PIN_2)) {
+            clickou_2 = true;
+            while (!gpio_get(BTN_PIN_2)) {
+                sleep_ms(100);
+            }
+        }
+
+        if (clickou_2){
             printf("Botao 2: %d\n", cnt_2++);
+            clickou_2 = false;
         }
     }
 }
