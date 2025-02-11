@@ -25,7 +25,7 @@ int main() {
         if (!gpio_get(BTN_PIN)) {
             clickou = true;
             while (!gpio_get(BTN_PIN)) {
-                sleep_ms(2);
+                sleep_ms(500);
             }
         }
 
@@ -37,7 +37,7 @@ int main() {
         if (!gpio_get(BTN_PIN_2)) {
             clickou_2 = true;
             while (!gpio_get(BTN_PIN_2)) {
-                sleep_ms(2);
+                sleep_ms(500);
             }
         }
 
